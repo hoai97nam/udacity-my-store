@@ -1,0 +1,13 @@
+<div class="product-container">
+    <div class="product-image" (click)="go2Detail.emit(item.id)">
+        <img class="product-img" [src]="item.url" alt="Image">
+    </div>
+    <div>{{item.name}}</div>
+    <div>{{item.price | currency:'USD'}}</div>
+    <div class="select-input">
+        <select [(ngModel)]="selectedAmount" (ngModelChange)="onSelect($event)">
+            <option *ngFor="let number of numbers" [value]="number">{{ number }}</option>
+        </select>
+    </div>
+    <button class="button-primary" (click)="add2CartEvent(item)">Add to cart</button>
+</div>

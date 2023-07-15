@@ -1,0 +1,15 @@
+<div *ngIf="product$ | async as detail" class="detail-container">
+    <img [src]="detail.url" alt="img">
+    <div class="detail-item">
+        <div class="item-name"> {{detail.name}} </div>
+        <div class="item-price"> {{detail.price | currency:'USD'}} </div>
+        <div class="item-des"> {{detail.description}} </div>
+        <div class="select-input" >
+            <select [(ngModel)]="selectedAmount" (ngModelChange)="onSelect($event)">
+                <option *ngFor="let number of numbers" [value]="number">{{ number }}</option>
+            </select>
+        </div>
+        <button class="button-primary" (click)="add2Cart(detail)">Add to cart</button>
+        <a class="back-link" href="/list">&larr; Back to product list</a>
+    </div>
+</div>
